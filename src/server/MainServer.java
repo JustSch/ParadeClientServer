@@ -15,14 +15,18 @@ public class MainServer {
 	public MainServer() {
 
 		try {
+			
 			ServerSocket server = new ServerSocket(5000);
 			//InetAddress myAddress = InetAddress.getLocalHost();
 			
 			System.out.println("Wating for Client");
-
-			Socket connection = server.accept();
-			DataOutputStream dos = new DataOutputStream(connection.getOutputStream());
-			DataInputStream dis = new DataInputStream(connection.getInputStream());
+			while (true) {
+				Socket connection = server.accept();
+				new ServerHelper(connection).start();
+			}
+			
+			//DataOutputStream dos = new DataOutputStream(connection.getOutputStream());
+			//DataInputStream dis = new DataInputStream(connection.getInputStream());
 			
 			//spawn helper then pass streams into helper
 
@@ -34,7 +38,8 @@ public class MainServer {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("s");
+		//new ClockHelper();
+		
 	}
 
 }
