@@ -10,6 +10,7 @@ public class OrangeStudent implements Runnable {
 	public int totalParadeGroups;
 	public int parades;//for parades watched
 	public int puppetShow; //for puppet shows watched
+	public int walkingTime;
 
 	public OrangeStudent(Marching march, String name, int numSeat, int totalParadeGroups) {
 		this.march = march;
@@ -21,43 +22,20 @@ public class OrangeStudent implements Runnable {
 
 	@Override
 	public void run() {
-		setName(name);
-		Random random = new Random();
-		int walkingTime = 2000 + random.nextInt(500);// for walking around 20 min
+		getReadyToWait();
 		while (march.isParadeOngoing()) {
-			int waiting = march.letOrangeInParade();
-			
-			march.paradeWaiting(waiting%totalParadeGroups); //used to place student into the line for the parade
-	
+			beginWaiting();
 			if(!march.isParadeOngoing()) break;  //break if parade over
-			
-			try {
-				march.walking();
-				parades++;
-				Thread.sleep(walkingTime);  //sleep/march for random time in parade
-				if(!march.isParadeOngoing()) break;
-			} catch (InterruptedException e1) {
-				msg("I didn't like the parade so I went home");
-			}
+			marchInParade();
 			if(!march.isParadeOngoing()) break;
-			
-			msg("I have exited the parade");
-
-			try {
-				msg("I Have Taken a Snack Break");
-				Thread.sleep(1000);
-				if(!march.isParadeOngoing()) break;
-			} catch (InterruptedException e) {
-				msg("I didn't like the parade so I went home");
-			}
-			march.puppetShowWait();
+			snackBreak();
 			if(!march.isParadeOngoing()) break;
-			march.watchingPuppetShow();
-			puppetShow++;
+			lineUpForPuppetShow();
+			if(!march.isParadeOngoing()) break;
+			watchPuppetShow();
 			if(!march.isParadeOngoing()) break;
 		}
-		msg("i am going home now");
-		msg("i participated in "+parades+" parades and saw "+puppetShow+" puppet shows today");
+		leaving();
 
 	}
 
@@ -68,6 +46,54 @@ public class OrangeStudent implements Runnable {
 	public void msg(String m) {  //Generic Message Method
 		System.out.println(
 				"[" + (System.currentTimeMillis() - time) + "] " + Thread.currentThread().getName() + ": " + m);
+	}
+	
+	public void getReadyToWait() {
+		setName(name);
+		Random random = new Random();
+		walkingTime = 2000 + random.nextInt(500);// for walking around 20 min
+	}
+	public void beginWaiting() {
+		int waiting = march.letOrangeInParade();
+		
+		march.paradeWaiting(waiting%totalParadeGroups); //used to place student into the line for the parade
+
+	}
+	public void marchInParade() {
+		march.walking();
+		parades++;
+		try {
+			
+			Thread.sleep(walkingTime);  //sleep/march for random time in parade
+			
+		} catch (InterruptedException e1) {
+			msg("I didn't like the parade so I went home");
+		}
+		msg("I have exited the parade");
+	}
+	
+	public void snackBreak() {
+		try {
+			msg("I Have Taken a Snack Break");
+			Thread.sleep(1000);
+			
+		} catch (InterruptedException e) {
+			msg("I didn't like the parade so I went home");
+		}
+	}
+	
+	public void lineUpForPuppetShow() {
+		march.puppetShowWait();
+	}
+	
+	public void watchPuppetShow() {
+		march.watchingPuppetShow();
+		puppetShow++;
+	}
+	
+	public void leaving() {
+		msg("i am going home now");
+		msg("i participated in "+parades+" parades and saw "+puppetShow+" puppet shows today");
 	}
 
 }
