@@ -29,7 +29,7 @@ public class MainClient {
 		//Clients must execute concurrently too!!
 		//Clients need to be synchronized? 
 		//will wait using code in server?
-		//cant progress until message recieved from server
+		//cant progress until message recieved from server aka will block until it recieves input (is possible example does it)
 		//while true loops for everything!!!!!
 		spawnClock();
 		spawnStaff();
