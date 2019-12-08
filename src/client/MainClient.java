@@ -23,6 +23,9 @@ public class MainClient {
 		
 	}
 	public void main (String [] args) {
+		//clients will make their own sockets
+		//will pass information need for threads in stream to be recieved on other end
+		//while true loops for everything!!!!!
 		spawnClock();
 		spawnStaff();
 		spawnGreenStudents();
