@@ -29,8 +29,6 @@ public class GreenStudent implements Runnable {
 			if(!march.isParadeOngoing()) break;
 			marchInParade();
 			if(!march.isParadeOngoing()) break;
-			msg("I have exited the parade");
-			if(!march.isParadeOngoing()) break;
 			snackBreak();
 			if(!march.isParadeOngoing()) break;
 			lineUpForPuppetShow();
@@ -71,6 +69,7 @@ public class GreenStudent implements Runnable {
 		} catch (InterruptedException e1) {
 			msg("I didn't like the parade so I went home");
 		}
+		msg("I have exited the parade");
 	}
 	public void snackBreak() {
 		try {
