@@ -16,20 +16,20 @@ public class StaffMember implements Runnable {
 
 	@Override
 	public void run() {
-		setName(name);
+		settingName();
 		while (march.isParadeOngoing()) {
 			prePuppetShow();
 			if(!march.isParadeOngoing()) break;
 			openPuppetShow();
 			if(!march.isParadeOngoing()) break;
-			msg("The Puppet Show Is Starting: Closing Tent");
-			if(!march.isParadeOngoing()) break;
 
 
 		}
 		endParade();
-		msg("The parade is ending please make your way to the nearest exit");
 
+	}
+	public void settingName() {
+		setName(name);
 	}
 	public void prePuppetShow() {
 		msg("The Puppet Show Will Start Soon: Opening Tent "+numSeat+" may enter the tent");
@@ -40,6 +40,8 @@ public class StaffMember implements Runnable {
 		try {
 			openingCurtain();
 			guideToExit();
+
+			msg("The Puppet Show Is Starting: Closing Tent");
 		} catch (Exception e) {
 			msg("The Students Were too slow to see the puppet show at this time");
 		}
@@ -80,6 +82,8 @@ public class StaffMember implements Runnable {
 	
 	public void endParade() {  //releases all puppet related vectors
 		march.releasePuppetVectors();
+
+		msg("The parade is ending please make your way to the nearest exit");
 	}
 
 }
