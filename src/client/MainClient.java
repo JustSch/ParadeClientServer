@@ -8,19 +8,22 @@ public class MainClient {
 	
 	public void spawnGreenStudents() {
 		for (int i=0; i< numGreen;i++) {
-			new GreenStudentClient(numGreen);
+			new GreenStudentClient(numGreen).start();
 		}
 	}
 	public void spawnOrangeStudents() {
-		
+		for (int i=0; i< numOrange;i++) {
+			new OrangeStudentClient(numOrange).start();
+		}
 	}
 	
 	public void spawnClock() {
-		
+		ClockClient clockClient = new ClockClient();
+		clockClient.start();
 	}
 	
 	public void spawnStaff() {
-		
+		new StaffClient().start();
 	}
 	public void main (String [] args) {
 		//clients will make their own sockets

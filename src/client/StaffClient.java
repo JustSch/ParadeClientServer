@@ -1,5 +1,9 @@
 package client;
 
-public class StaffClient {
+public class StaffClient extends Thread{
 
+	
+	public void run() {
+		
+	}
 }

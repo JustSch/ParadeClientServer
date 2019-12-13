@@ -1,5 +1,9 @@
 package client;
 
-public class ClockClient {
-
+public class ClockClient extends Thread{
+	
+	
+	public void run () {
+		
+	}
 }
