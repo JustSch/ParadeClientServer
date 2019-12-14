@@ -38,8 +38,6 @@ public class GreenStudentClient extends Thread {
 
 			writer.write(String.valueOf(numSeats));
 			
-			
-			
 			for (int i =0;i<=9;i++) {
 				writer.write(i);
 				System.out.println(reader.readLine());
