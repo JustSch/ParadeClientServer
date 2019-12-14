@@ -32,14 +32,7 @@ public class ClockClient extends Thread {
 			
 			Socket connection = new Socket("localhost", 5000);
 			
-			new StaffClient(numOrange,numGreen,numSeats,march).start();
-			for (int i=0; i< numGreen;i++) {
-				new GreenStudentClient(numOrange,numGreen,numSeats,i,march).start();
-			}
 			
-			for (int i=0; i< numOrange;i++) {
-				new OrangeStudentClient(numOrange,numGreen,numSeats,i,march).start();
-			}
 			//DataOutputStream output = new DataOutputStream(connection.getOutputStream());
 			//DataInputStream input = new DataInputStream(connection.getInputStream());
 

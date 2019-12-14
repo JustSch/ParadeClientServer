@@ -52,9 +52,9 @@ public class GreenStudentClient extends Thread {
 			System.out.println(reader.readLine());
 			while(march.isParadeOngoing()) {
 				for (int i =1;i<6;i++) {
-					if(!march.isParadeOngoing()) {writer.println("parade over"); break;}//send 55 to break in server!!
+					if(!march.isParadeOngoing()) {writer.println("over"); break;}//send 55 to break in server!!
 					writer.println("Green Student: "+i);
-					if(!march.isParadeOngoing()) {writer.println("parade over"); break;}
+					if(!march.isParadeOngoing()) {writer.println("over"); break;}
 					writer.println(i);
 					//if(!paradeOngoing)break;
 					System.out.println(reader.readLine());
@@ -62,7 +62,7 @@ public class GreenStudentClient extends Thread {
 				}
 				
 			}
-			System.out.println("sssssssssss");
+			//System.out.println("sssssssssss");
 			writer.println("Green Student: "+6);
 			writer.println(String.valueOf(6));
 			System.out.println(reader.readLine());

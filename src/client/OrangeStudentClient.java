@@ -49,11 +49,11 @@ public class OrangeStudentClient extends Thread {
 			writer.println(String.valueOf(0));
 			
 			System.out.println(reader.readLine());
-			while (paradeOngoing) {
+			while (march.isParadeOngoing()) {
 				for (int i =1;i<6;i++) {
-					if(!march.isParadeOngoing()) {writer.println("parade over"); break;}
+					if(!march.isParadeOngoing()) {writer.println("over"); break;}
 					writer.println("Orange Student: "+i);
-					if(!march.isParadeOngoing()) {writer.println("parade over"); break;}
+					if(!march.isParadeOngoing()) {writer.println("over"); break;}
 					writer.println(String.valueOf(i));
 					System.out.println(reader.readLine());
 					//if(!paradeOngoing)break;

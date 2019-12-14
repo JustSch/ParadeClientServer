@@ -45,9 +45,9 @@ public class StaffClient extends Thread {
 			System.out.println(reader.readLine());
 			while (march.isParadeOngoing()) {
 				for (int i = 1; i < 3; i++) {
-					if(!march.isParadeOngoing()) {writer.println("parade over"); break;}
+					if(!march.isParadeOngoing()) {writer.println("over"); break;}
 					writer.println("Staff Member: "+i);
-					if(!march.isParadeOngoing()) {writer.println("parade over"); break;}
+					if(!march.isParadeOngoing()) {writer.println("over"); break;}
 					writer.println(i);
 					//if(!paradeOngoing)break;
 					System.out.println(reader.readLine());
