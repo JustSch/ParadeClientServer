@@ -14,12 +14,14 @@ public class GreenStudentClient extends Thread {
 	private int numOrange;
 	private int numSeats;
 	private int threadNum;
+	private boolean paradeOngoing;
 
-	public GreenStudentClient(int numOrange,int numGreen,int numSeats, int threadNum) {
+	public GreenStudentClient(int numOrange,int numGreen,int numSeats, int threadNum, boolean paradeOngoing) {
 		this.numOrange=numOrange;
 		this.numGreen = numGreen;
 		this.numSeats=numSeats;
 		this.threadNum = threadNum;
+		this.paradeOngoing=paradeOngoing;
 	}
 
 	// spawn students
@@ -41,11 +43,21 @@ public class GreenStudentClient extends Thread {
 			writer.println(String.valueOf(numSeats));
 			
 			writer.println("Green Student: "+threadNum);
-			
-			for (int i =0;i<9;i++) {
-				writer.println(i);
-				System.out.println(reader.readLine());
+			while(paradeOngoing) {
+				for (int i =0;i<6;i++) {
+					writer.println("Green Student: "+i);
+					writer.println(i);
+					System.out.println(reader.readLine());
+				}
+				
 			}
+			
+			writer.println("Green Student: "+6);
+			writer.println(String.valueOf(6));
+			System.out.println(reader.readLine());
+			
+			
+			
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block

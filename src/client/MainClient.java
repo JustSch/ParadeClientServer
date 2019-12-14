@@ -14,17 +14,18 @@ public class MainClient {
 		int numGreen = 14; //default green student
 		int numOrange = 7; //default orange students
 		int numSeat = 6; //default tent capacity
+		boolean paradeOngoing=true;
 		
-		ClockClient clockClient = new ClockClient(numOrange, numGreen, numSeat);
+		ClockClient clockClient = new ClockClient(numOrange, numGreen, numSeat,paradeOngoing);
 		clockClient.start();
 		
-		new StaffClient(numOrange,numGreen,numSeat).start();
+		new StaffClient(numOrange,numGreen,numSeat,paradeOngoing).start();
 		for (int i=0; i< numGreen;i++) {
-			new GreenStudentClient(numOrange,numGreen,numSeat,i).start();
+			new GreenStudentClient(numOrange,numGreen,numSeat,i,paradeOngoing).start();
 		}
 		
 		for (int i=0; i< numOrange;i++) {
-			new OrangeStudentClient(numOrange,numGreen,numSeat,i).start();
+			new OrangeStudentClient(numOrange,numGreen,numSeat,i,paradeOngoing).start();
 		}
 		
 		

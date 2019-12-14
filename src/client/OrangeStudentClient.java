@@ -14,11 +14,13 @@ public class OrangeStudentClient extends Thread {
 	private int numSeats;
 	private int numGreen;
 	private int threadNum;
-	public OrangeStudentClient(int numOrange, int numGreen, int numSeats, int threadNum) {
+	private boolean paradeOngoing;
+	public OrangeStudentClient(int numOrange, int numGreen, int numSeats, int threadNum, boolean paradeOngoing) {
 		this.numOrange = numOrange;
 		this.numGreen=numGreen;
 		this.numSeats=numSeats;
 		this.threadNum=threadNum;
+		this.paradeOngoing=paradeOngoing;
 	}
 
 	public void run() {
@@ -39,11 +41,17 @@ public class OrangeStudentClient extends Thread {
 			writer.println(String.valueOf(numSeats));
 			
 			writer.println("Orange Student: "+ threadNum);
-			
-			for (int i =0;i<6;i++) {
-				writer.println(i);
-				System.out.println(reader.readLine());
+			while (paradeOngoing) {
+				for (int i =0;i<6;i++) {
+					writer.println("Orange Student: "+i);
+					writer.println(i);
+					System.out.println(reader.readLine());
+				}
+				
 			}
+			writer.println("Orange Student: "+6);
+			writer.println(6);
+			System.out.println(reader.readLine());
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block

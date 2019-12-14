@@ -13,11 +13,12 @@ public class ClockClient extends Thread {
 	private int numOrange;
 	private int numGreen;
 	private int numSeats;
-	
-	public ClockClient(int numOrange,int numGreen,int numSeats) {
+	private boolean paradeOngoing;
+	public ClockClient(int numOrange,int numGreen,int numSeats, boolean paradeOngoing) {
 		this.numOrange = numOrange;
 		this.numGreen = numOrange;
 		this.numSeats = numSeats;
+		this.paradeOngoing=paradeOngoing;
 	}
 	
 	public void run() {
@@ -47,11 +48,12 @@ public class ClockClient extends Thread {
 			
 			System.out.println("DDDDDDDDDDDD");
 			
-			for (int i =0;i<19;i++) {
+			for (int i =0;i<=19;i++) {
 				writer.println("Clock: "+i);
 				writer.println(i);
 				System.out.println(reader.readLine());
 			}
+			paradeOngoing=false;
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
