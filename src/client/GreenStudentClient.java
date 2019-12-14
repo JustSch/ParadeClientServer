@@ -31,12 +31,18 @@ public class GreenStudentClient extends Thread {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 
 			PrintWriter writer = new PrintWriter(output);
-			System.out.println(reader.readLine());
-			writer.write("Clock Client Created");
-			System.out.println(reader.readLine());
+			writer.write("green");
+			writer.write(String.valueOf(numOrange));
+
+			writer.write(String.valueOf(numGreen));
+
+			writer.write(String.valueOf(numSeats));
 			
-			for (int i =0;i<=19;i++) {
+			
+			
+			for (int i =0;i<=9;i++) {
 				writer.write(i);
+				System.out.println(reader.readLine());
 			}
 
 		} catch (UnknownHostException e) {

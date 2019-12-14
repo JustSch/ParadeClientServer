@@ -22,8 +22,10 @@ public class MainClient {
 		clockClient.start();
 	}
 	
+	
+	
 	public void spawnStaff() {
-		new StaffClient().start();
+		new StaffClient(numSeat).start();
 	}
 	public void main (String [] args) {
 		//clients will make their own sockets

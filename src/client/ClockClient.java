@@ -44,6 +44,11 @@ public class ClockClient extends Thread {
 			//System.out.println(input.readUTF());
 			//output.writeUTF("Clock Client Created");
 			//System.out.println(input.readUTF());
+			
+			for (int i =0;i<=19;i++) {
+				writer.write(i);
+				System.out.println(reader.readLine());
+			}
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
