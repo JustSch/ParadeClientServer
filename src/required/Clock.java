@@ -93,7 +93,8 @@ public class Clock implements Runnable {
 		Random random = new Random();
 		walkingTime = 1000 + random.nextInt(1000);// for walking around 20 min
 		march.readyPuppetShow();
-		march.setParadeIsOngoing();
+		if(local)march.setParadeIsOngoing();
+		
 		
 	}
 	

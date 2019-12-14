@@ -47,7 +47,7 @@ public class ServerHelper extends Thread {
 			Marching march = new Marching();
 			march.startParade(numOrange);
 			march.setParadeIsOngoing();
-			System.out.println("ffffffffffffffffff");
+			//System.out.println("ffffffffffffffffff");
 			switch (threadType) {
 			case "clock":
 

@@ -20,17 +20,11 @@ public class MainClient {
 		int numSeat = 6; //default tent capacity
 		//boolean paradeOngoing=true;
 		Marching march = new Marching();
+		march.setParadeIsOngoing();
 		ClockClient clockClient = new ClockClient(numOrange, numGreen, numSeat,march);
 		clockClient.start();
 		
-		new StaffClient(numOrange,numGreen,numSeat,march).start();
-		for (int i=0; i< numGreen;i++) {
-			new GreenStudentClient(numOrange,numGreen,numSeat,i,march).start();
-		}
 		
-		for (int i=0; i< numOrange;i++) {
-			new OrangeStudentClient(numOrange,numGreen,numSeat,i,march).start();
-		}
 		
 		
 		

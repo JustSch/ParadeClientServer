@@ -29,15 +29,24 @@ public class ClockClient extends Thread {
 		// create input and output streams
 		// run methods
 		try {
-
+			
 			Socket connection = new Socket("localhost", 5000);
+			
+			new StaffClient(numOrange,numGreen,numSeats,march).start();
+			for (int i=0; i< numGreen;i++) {
+				new GreenStudentClient(numOrange,numGreen,numSeats,i,march).start();
+			}
+			
+			for (int i=0; i< numOrange;i++) {
+				new OrangeStudentClient(numOrange,numGreen,numSeats,i,march).start();
+			}
 			//DataOutputStream output = new DataOutputStream(connection.getOutputStream());
 			//DataInputStream input = new DataInputStream(connection.getInputStream());
 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			
 			PrintWriter writer = new PrintWriter(connection.getOutputStream(),true);
-			march.setParadeIsOngoing();
+			//march.setParadeIsOngoing();
 			//System.out.println(reader.readLine());
 			writer.println("clock");
 			writer.println(String.valueOf(numOrange));
