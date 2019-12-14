@@ -10,10 +10,14 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class GreenStudentClient extends Thread {
-	int numGreen = 0;
+	private int numGreen;
+	private int numOrange;
+	private int numSeats;
 
-	public GreenStudentClient(int numGreen) {
+	public GreenStudentClient(int numOrange,int numGreen,int numSeats) {
+		this.numOrange=numOrange;
 		this.numGreen = numGreen;
+		this.numSeats=numSeats;
 	}
 
 	// spawn students

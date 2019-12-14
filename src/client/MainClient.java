@@ -8,17 +8,17 @@ public class MainClient {
 	
 	public void spawnGreenStudents() {
 		for (int i=0; i< numGreen;i++) {
-			new GreenStudentClient(numGreen).start();
+			new GreenStudentClient(numOrange,numGreen,numSeat).start();
 		}
 	}
 	public void spawnOrangeStudents() {
 		for (int i=0; i< numOrange;i++) {
-			new OrangeStudentClient(numOrange).start();
+			new OrangeStudentClient(numOrange,numGreen,numSeat).start();
 		}
 	}
 	
 	public void spawnClock() {
-		ClockClient clockClient = new ClockClient();
+		ClockClient clockClient = new ClockClient(numOrange, numGreen, numSeat);
 		clockClient.start();
 	}
 	

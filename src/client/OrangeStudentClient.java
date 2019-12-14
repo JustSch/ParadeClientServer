@@ -7,9 +7,13 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class OrangeStudentClient extends Thread {
-
-	public OrangeStudentClient(int numOrange) {
-		// TODO Auto-generated constructor stub
+	private int numOrange;
+	private int numSeats;
+	private int numGreen;
+	public OrangeStudentClient(int numOrange, int numGreen, int numSeats) {
+		this.numOrange = numOrange;
+		this.numGreen=numGreen;
+		this.numSeats=numSeats;
 	}
 
 	public void run() {

@@ -10,7 +10,16 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class ClockClient extends Thread {
-
+	private int numOrange;
+	private int numGreen;
+	private int numSeats;
+	
+	public ClockClient(int numOrange,int numGreen,int numSeats) {
+		this.numOrange = numOrange;
+		this.numGreen = numOrange;
+		this.numSeats = numSeats;
+	}
+	
 	public void run() {
 		// connect to server
 		// create input and output streams
@@ -25,8 +34,13 @@ public class ClockClient extends Thread {
 
 			PrintWriter writer = new PrintWriter(output);
 			
-			System.out.println(reader.readLine());
-			writer.write("Clock Client");
+			//System.out.println(reader.readLine());
+			writer.write("clock");
+			writer.write(String.valueOf(numOrange));
+
+			writer.write(String.valueOf(numGreen));
+
+			writer.write(String.valueOf(numSeats));
 			//System.out.println(input.readUTF());
 			//output.writeUTF("Clock Client Created");
 			//System.out.println(input.readUTF());
