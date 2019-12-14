@@ -43,19 +43,22 @@ public class OrangeStudentClient extends Thread {
 			writer.println("Orange Student: "+ threadNum);
 			
 			writer.println("Orange Student: "+0);
-			writer.println(0);
+			writer.println(String.valueOf(0));
+			
 			System.out.println(reader.readLine());
 			while (paradeOngoing) {
 				for (int i =1;i<6;i++) {
 					if(!paradeOngoing)break;
 					writer.println("Orange Student: "+i);
+					if(!paradeOngoing)break;
+					writer.println(String.valueOf(i));
 					System.out.println(reader.readLine());
 					if(!paradeOngoing)break;
 				}
 				
 			}
 			writer.println("Orange Student: "+6);
-			writer.println(6);
+			writer.println(String.valueOf(6));
 			System.out.println(reader.readLine());
 
 		} catch (UnknownHostException e) {

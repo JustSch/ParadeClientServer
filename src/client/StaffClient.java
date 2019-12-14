@@ -38,21 +38,21 @@ public class StaffClient extends Thread {
 
 			writer.println(String.valueOf(numSeats));
 			writer.println("Staff Member: "+0);
-			writer.println(3);
+			writer.println(String.valueOf(0));
 			System.out.println(reader.readLine());
 			while (paradeOngoing) {
 				for (int i = 1; i < 3; i++) {
 					if(!paradeOngoing)break;
 					writer.println("Staff Member: "+i);
-				
+					if(!paradeOngoing)break;
 					writer.println(i);
-					
+					if(!paradeOngoing)break;
 					System.out.println(reader.readLine());
 					if(!paradeOngoing)break;
 				}
 			}
 			writer.println("Staff Member: "+3);
-			writer.println(3);
+			writer.println(String.valueOf(3));
 			System.out.println(reader.readLine());
 			
 

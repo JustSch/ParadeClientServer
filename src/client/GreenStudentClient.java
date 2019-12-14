@@ -51,9 +51,9 @@ public class GreenStudentClient extends Thread {
 				for (int i =1;i<6;i++) {
 					if(!paradeOngoing)break;
 					writer.println("Green Student: "+i);
-				
+					if(!paradeOngoing)break;
 					writer.println(i);
-					
+					if(!paradeOngoing)break;
 					System.out.println(reader.readLine());
 					if(!paradeOngoing)break;
 				}

@@ -42,11 +42,7 @@ public class ClockClient extends Thread {
 			writer.println(String.valueOf(numGreen));
 
 			writer.println(String.valueOf(numSeats));
-			//System.out.println(input.readUTF());
-			//output.writeUTF("Clock Client Created");
-			//System.out.println(input.readUTF());
 			
-			System.out.println("DDDDDDDDDDDD");
 			
 			for (int i =0;i<=19;i++) {
 				writer.println("Clock: "+i);
