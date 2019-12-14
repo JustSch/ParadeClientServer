@@ -41,11 +41,16 @@ public class OrangeStudentClient extends Thread {
 			writer.println(String.valueOf(numSeats));
 			
 			writer.println("Orange Student: "+ threadNum);
+			
+			writer.println("Orange Student: "+0);
+			writer.println(0);
+			System.out.println(reader.readLine());
 			while (paradeOngoing) {
-				for (int i =0;i<6;i++) {
+				for (int i =1;i<6;i++) {
+					if(!paradeOngoing)break;
 					writer.println("Orange Student: "+i);
-					writer.println(i);
 					System.out.println(reader.readLine());
+					if(!paradeOngoing)break;
 				}
 				
 			}

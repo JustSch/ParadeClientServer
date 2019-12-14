@@ -43,11 +43,19 @@ public class GreenStudentClient extends Thread {
 			writer.println(String.valueOf(numSeats));
 			
 			writer.println("Green Student: "+threadNum);
+			
+			writer.println("Green Student: "+0);
+			writer.println(String.valueOf(0));
+			System.out.println(reader.readLine());
 			while(paradeOngoing) {
-				for (int i =0;i<6;i++) {
+				for (int i =1;i<6;i++) {
+					if(!paradeOngoing)break;
 					writer.println("Green Student: "+i);
+				
 					writer.println(i);
+					
 					System.out.println(reader.readLine());
+					if(!paradeOngoing)break;
 				}
 				
 			}

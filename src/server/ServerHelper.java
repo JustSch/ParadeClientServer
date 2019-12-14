@@ -46,6 +46,7 @@ public class ServerHelper extends Thread {
 			
 			Marching march = new Marching();
 			march.startParade(numOrange);
+			march.setParadeIsOngoing();
 			System.out.println("ffffffffffffffffff");
 			switch (threadType) {
 			case "clock":
@@ -77,7 +78,7 @@ public class ServerHelper extends Thread {
 		System.out.println("oooooooooooooooo");
 		ClockHelper helper = new ClockHelper("clock",numOrange,march,numSeats,StaffNotifier);
 		System.out.println("JJJJJJJJJJJJJ");
-		while(paradeOngoing) {
+		while(march.isParadeOngoing()) {
 			try {
 				String request = reader.readLine();
 				System.out.println("clock requested: "+request);
@@ -87,6 +88,19 @@ public class ServerHelper extends Thread {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+		}
+		
+		
+		try {
+			String request = reader.readLine();
+			System.out.println("clock requested: "+request);
+			helper.runMethods((Integer.parseInt(reader.readLine())));
+			writer.println("Request: "+request+" Complete");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		
@@ -104,7 +118,7 @@ public class ServerHelper extends Thread {
 		
 		GreenStudentHelper helper = new GreenStudentHelper(march,threadName,numSeats,numOrange);
 		
-		while(paradeOngoing) {
+		while(march.isParadeOngoing()) {
 			try {
 				String request = reader.readLine();
 				System.out.println("Green Student requested: "+request);
@@ -113,6 +127,16 @@ public class ServerHelper extends Thread {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+		try {
+			String request = reader.readLine();
+			System.out.println("Green Student requested: "+request);
+			helper.runningMethods((Integer.parseInt(reader.readLine())));
+			writer.println("Request: "+request+" Complete");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -126,7 +150,7 @@ public class ServerHelper extends Thread {
 		
 		OrangeStudentHelper helper = new OrangeStudentHelper(march,threadName,numSeats,numOrange);
 		
-		while(paradeOngoing) {
+		while(march.isParadeOngoing()) {
 			try {
 				String request = reader.readLine();
 				System.out.println("Orange Student requested: "+request);
@@ -136,6 +160,17 @@ public class ServerHelper extends Thread {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+		try {
+			String request = reader.readLine();
+			System.out.println("Orange Student requested: "+request);
+			helper.runningMethods((Integer.parseInt(reader.readLine())));
+
+			writer.println("Request: "+request+" Complete");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -148,7 +183,7 @@ public class ServerHelper extends Thread {
 		
 		StaffHelper helper = new StaffHelper(march,"Staff Member",StaffNotifier,numSeats);
 		
-		while(paradeOngoing) {
+		while(march.isParadeOngoing()) {
 			try {
 				String request = reader.readLine();
 				System.out.println("staff requested: "+request);
@@ -157,6 +192,17 @@ public class ServerHelper extends Thread {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		try {
+			String request = reader.readLine();
+			System.out.println("staff requested: "+request);
+			helper.runningMethods((Integer.parseInt(reader.readLine())));
+			writer.println("Request: "+request+" Complete");
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
