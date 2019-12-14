@@ -11,16 +11,22 @@ public class MainServer {
 
 	private static int port;
 	private static String address;
-
+	private static boolean paradeOngoing=true;
 	public MainServer() {
 
-		try {
+		
+
+	}
+
+	public static void main(String[] args) {
+		//new ClockHelper();
+try {
 			
 			ServerSocket server = new ServerSocket(5000);
 			//InetAddress myAddress = InetAddress.getLocalHost();
 			
 			System.out.println("Wating for Client");
-			while (true) {
+			while (paradeOngoing) {
 				Socket connection = server.accept();
 				new ServerHelper(connection).start();
 			}
@@ -34,12 +40,6 @@ public class MainServer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-
-	public static void main(String[] args) {
-		//new ClockHelper();
-		
 	}
 
 }
