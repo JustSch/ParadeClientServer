@@ -10,6 +10,7 @@ public class Clock implements Runnable {
 	public static Object StaffNotifier = new Object();
 	public int numSeat; //number of seats for puppet show
 	public int walkingTime;
+	private boolean local;
 	public String [] paradeMessages = {"It is 11:00AM The Parade Has Started",
 			"It is 12:00PM. The Second Parade has Started",
 			"It is 1:00PM. The Third Parade has Started",
@@ -41,6 +42,7 @@ public class Clock implements Runnable {
 		this.total = total;
 		this.march = march;
 		this.numSeat = numSeat;
+		local=true;
 	}
 	public Clock(String clockName,  int total, Marching march, int numSeat,Object StaffNotifier) {
 		this.clockName = clockName;
@@ -48,6 +50,7 @@ public class Clock implements Runnable {
 		this.march = march;
 		this.numSeat = numSeat;
 		this.StaffNotifier = StaffNotifier;
+		local=false;
 	}
 	public final void setName(String clockNameToSet) {
 
@@ -137,7 +140,8 @@ public class Clock implements Runnable {
 		}
 	}
 	public void endParade() {  //used to notify all objects used after parade has ended for the day
-		march.setParadeOver();
+		if (local)march.setParadeOver();//allows to still function if just run as project 1
+		
 		try {
 			releaseGroups();
 			march.releasing(StaffNotifier);	
