@@ -27,26 +27,29 @@ public class ClockClient extends Thread {
 		try {
 
 			Socket connection = new Socket("localhost", 5000);
-			DataOutputStream output = new DataOutputStream(connection.getOutputStream());
-			DataInputStream input = new DataInputStream(connection.getInputStream());
+			//DataOutputStream output = new DataOutputStream(connection.getOutputStream());
+			//DataInputStream input = new DataInputStream(connection.getInputStream());
 
-			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-
-			PrintWriter writer = new PrintWriter(output);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			
+			PrintWriter writer = new PrintWriter(connection.getOutputStream(),true);
 			
 			//System.out.println(reader.readLine());
-			writer.write("clock");
-			writer.write(String.valueOf(numOrange));
+			writer.println("clock");
+			writer.println(String.valueOf(numOrange));
 
-			writer.write(String.valueOf(numGreen));
+			writer.println(String.valueOf(numGreen));
 
-			writer.write(String.valueOf(numSeats));
+			writer.println(String.valueOf(numSeats));
 			//System.out.println(input.readUTF());
 			//output.writeUTF("Clock Client Created");
 			//System.out.println(input.readUTF());
 			
-			for (int i =0;i<=19;i++) {
-				writer.write(i);
+			System.out.println("DDDDDDDDDDDD");
+			
+			for (int i =0;i<19;i++) {
+				writer.println("Clock: "+i);
+				writer.println(i);
 				System.out.println(reader.readLine());
 			}
 

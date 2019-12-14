@@ -26,20 +26,20 @@ public class OrangeStudentClient extends Thread {
 			DataOutputStream output = new DataOutputStream(connection.getOutputStream());
 			DataInputStream input = new DataInputStream(connection.getInputStream());
 
-			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			
+			PrintWriter writer = new PrintWriter(connection.getOutputStream(),true);
+			writer.println("orange");
+			writer.println(String.valueOf(numOrange));
 
-			PrintWriter writer = new PrintWriter(output);
-			writer.write("orange");
-			writer.write(String.valueOf(numOrange));
+			writer.println(String.valueOf(numGreen));
 
-			writer.write(String.valueOf(numGreen));
-
-			writer.write(String.valueOf(numSeats));
+			writer.println(String.valueOf(numSeats));
 			
 			
 			
-			for (int i =0;i<=6;i++) {
-				writer.write(i);
+			for (int i =0;i<6;i++) {
+				writer.println(i);
 				System.out.println(reader.readLine());
 			}
 

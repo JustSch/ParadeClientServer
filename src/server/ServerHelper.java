@@ -34,15 +34,16 @@ public class ServerHelper extends Thread {
 			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 			DataInputStream dis = new DataInputStream(socket.getInputStream());
 
-			BufferedReader reader = new BufferedReader(new InputStreamReader(dis));
-			
-			PrintWriter writer = new PrintWriter(dos);
+				BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				
+				PrintWriter writer = new PrintWriter(socket.getOutputStream(),true);
 			
 			threadType = reader.readLine();
+			System.out.println(threadType);
 			numOrange = Integer.parseInt(reader.readLine());
 			numGreen = Integer.parseInt(reader.readLine());
 			numSeats = Integer.parseInt(reader.readLine());
-
+			System.out.println("ffffffffffffffffff");
 			Marching march = new Marching();
 			march.startParade(numOrange);
 			switch (threadType) {
@@ -72,11 +73,14 @@ public class ServerHelper extends Thread {
 	public void clock(BufferedReader reader, DataInputStream dis, DataOutputStream dos, PrintWriter writer, Marching march) {
 		
 		ClockHelper helper = new ClockHelper("clock",numOrange,march,numSeats,StaffNotifier);
-		
+		System.out.println("JJJJJJJJJJJJJ");
 		while(paradeOngoing) {
 			try {
-				System.out.println("clock requested: "+reader.readLine());
+				String request = reader.readLine();
+				System.out.println("clock requested: "+request);
 				helper.runMethods((Integer.parseInt(reader.readLine())));
+				writer.println("Request: "+request+" Complete");
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -99,8 +103,10 @@ public class ServerHelper extends Thread {
 		
 		while(paradeOngoing) {
 			try {
-				System.out.println("Green Student requested: "+reader.readLine());
+				String request = reader.readLine();
+				System.out.println("Green Student requested: "+request);
 				helper.runningMethods((Integer.parseInt(reader.readLine())));
+				writer.println("Request: "+request+" Complete");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -119,8 +125,11 @@ public class ServerHelper extends Thread {
 		
 		while(paradeOngoing) {
 			try {
-				System.out.println("Orange Student requested: "+reader.readLine());
+				String request = reader.readLine();
+				System.out.println("Orange Student requested: "+request);
 				helper.runningMethods((Integer.parseInt(reader.readLine())));
+
+				writer.println("Request: "+request+" Complete");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -140,8 +149,10 @@ public class ServerHelper extends Thread {
 		
 		while(paradeOngoing) {
 			try {
-				System.out.println("staff requested: "+reader.readLine());
+				String request = reader.readLine();
+				System.out.println("staff requested: "+request);
 				helper.runningMethods((Integer.parseInt(reader.readLine())));
+				writer.println("Request: "+request+" Complete");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

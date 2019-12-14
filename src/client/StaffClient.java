@@ -11,8 +11,12 @@ import java.net.UnknownHostException;
 
 public class StaffClient extends Thread {
 	private int numSeats;
-	public StaffClient(int numSeats) {
+	private int numOrange;
+	private int numGreen;
+	public StaffClient(int numOrange,int numGreen,int numSeats) {
 		this.numSeats=numSeats;
+		this.numOrange = numOrange;
+		this.numGreen=numGreen;
 	}
 
 	public void run() {
@@ -21,16 +25,19 @@ public class StaffClient extends Thread {
 			Socket connection = new Socket("localhost", 5000);
 			DataOutputStream output = new DataOutputStream(connection.getOutputStream());
 			DataInputStream input = new DataInputStream(connection.getInputStream());
+BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			
+			PrintWriter writer = new PrintWriter(connection.getOutputStream(),true);
+			writer.println("staff");
+			writer.println(String.valueOf(numOrange));
 
-			BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+			writer.println(String.valueOf(numGreen));
 
-			PrintWriter writer = new PrintWriter(output);
-			writer.write("staff");
-			writer.write(String.valueOf(numSeats));
+			writer.println(String.valueOf(numSeats));
 
 		
-			for (int i =0;i<=3;i++) {
-				writer.write(i);
+			for (int i =0;i<3;i++) {
+				writer.println(i);
 				System.out.println(reader.readLine());
 			}
 
