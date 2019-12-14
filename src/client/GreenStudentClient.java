@@ -1,16 +1,37 @@
 package client;
 
-public class GreenStudentClient extends Thread{
-	int numGreen=0;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class GreenStudentClient extends Thread {
+	int numGreen = 0;
+
 	public GreenStudentClient(int numGreen) {
 		this.numGreen = numGreen;
 	}
-	
-	//spawn students
+
+	// spawn students
 	public void run() {
-		
+		try {
+
+			Socket connection = new Socket("localhost", 5000);
+			DataOutputStream output = new DataOutputStream(connection.getOutputStream());
+			DataInputStream input = new DataInputStream(connection.getInputStream());
+
+			System.out.println(input.readUTF());
+			output.writeUTF("Clock Client Created");
+			System.out.println(input.readUTF());
+
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
-	
-	
+
 }
