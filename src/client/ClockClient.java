@@ -9,16 +9,19 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import required.Marching;
+
 public class ClockClient extends Thread {
 	private int numOrange;
 	private int numGreen;
 	private int numSeats;
 	private boolean paradeOngoing;
-	public ClockClient(int numOrange,int numGreen,int numSeats, boolean paradeOngoing) {
+	private Marching march;
+	public ClockClient(int numOrange,int numGreen,int numSeats, Marching march) {
 		this.numOrange = numOrange;
 		this.numGreen = numOrange;
 		this.numSeats = numSeats;
-		this.paradeOngoing=paradeOngoing;
+		this.march=march;
 	}
 	
 	public void run() {
@@ -34,7 +37,7 @@ public class ClockClient extends Thread {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			
 			PrintWriter writer = new PrintWriter(connection.getOutputStream(),true);
-			
+			march.setParadeIsOngoing();
 			//System.out.println(reader.readLine());
 			writer.println("clock");
 			writer.println(String.valueOf(numOrange));
@@ -49,7 +52,7 @@ public class ClockClient extends Thread {
 				writer.println(i);
 				System.out.println(reader.readLine());
 			}
-			paradeOngoing=false;
+			march.setParadeOver();
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block

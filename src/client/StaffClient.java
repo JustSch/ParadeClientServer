@@ -9,17 +9,20 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import required.Marching;
+
 public class StaffClient extends Thread {
 	private int numSeats;
 	private int numOrange;
 	private int numGreen;
 	private boolean paradeOngoing;
+	private Marching march;
 
-	public StaffClient(int numOrange, int numGreen, int numSeats, boolean paradeOngoing) {
+	public StaffClient(int numOrange, int numGreen, int numSeats, Marching march) {
 		this.numSeats = numSeats;
 		this.numOrange = numOrange;
 		this.numGreen = numGreen;
-		this.paradeOngoing=paradeOngoing;
+		this.march=march;
 	}
 
 	public void run() {
@@ -40,11 +43,11 @@ public class StaffClient extends Thread {
 			writer.println("Staff Member: "+0);
 			writer.println(String.valueOf(0));
 			System.out.println(reader.readLine());
-			while (paradeOngoing) {
+			while (march.isParadeOngoing()) {
 				for (int i = 1; i < 3; i++) {
-					if(!paradeOngoing) {writer.println("parade over"); break;}
+					if(!march.isParadeOngoing()) {writer.println("parade over"); break;}
 					writer.println("Staff Member: "+i);
-					if(!paradeOngoing) {writer.println("parade over"); break;}
+					if(!march.isParadeOngoing()) {writer.println("parade over"); break;}
 					writer.println(i);
 					//if(!paradeOngoing)break;
 					System.out.println(reader.readLine());

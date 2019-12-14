@@ -1,7 +1,11 @@
 package client;
 
+import required.Marching;
+
 public class MainClient {
 	
+	
+	public static boolean paradeOngoing =true;
 	public static void main (String [] args) {
 		//clients will make their own sockets
 		//will pass information need for threads in stream to be received on other end (during thread creation)
@@ -14,18 +18,18 @@ public class MainClient {
 		int numGreen = 14; //default green student
 		int numOrange = 7; //default orange students
 		int numSeat = 6; //default tent capacity
-		boolean paradeOngoing=true;
-		
-		ClockClient clockClient = new ClockClient(numOrange, numGreen, numSeat,paradeOngoing);
+		//boolean paradeOngoing=true;
+		Marching march = new Marching();
+		ClockClient clockClient = new ClockClient(numOrange, numGreen, numSeat,march);
 		clockClient.start();
 		
-		new StaffClient(numOrange,numGreen,numSeat,paradeOngoing).start();
+		new StaffClient(numOrange,numGreen,numSeat,march).start();
 		for (int i=0; i< numGreen;i++) {
-			new GreenStudentClient(numOrange,numGreen,numSeat,i,paradeOngoing).start();
+			new GreenStudentClient(numOrange,numGreen,numSeat,i,march).start();
 		}
 		
 		for (int i=0; i< numOrange;i++) {
-			new OrangeStudentClient(numOrange,numGreen,numSeat,i,paradeOngoing).start();
+			new OrangeStudentClient(numOrange,numGreen,numSeat,i,march).start();
 		}
 		
 		

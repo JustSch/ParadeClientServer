@@ -9,19 +9,22 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import required.Marching;
+
 public class GreenStudentClient extends Thread {
 	private int numGreen;
 	private int numOrange;
 	private int numSeats;
 	private int threadNum;
 	private boolean paradeOngoing;
+	private Marching march;
 
-	public GreenStudentClient(int numOrange,int numGreen,int numSeats, int threadNum, boolean paradeOngoing) {
+	public GreenStudentClient(int numOrange,int numGreen,int numSeats, int threadNum, Marching march) {
 		this.numOrange=numOrange;
 		this.numGreen = numGreen;
 		this.numSeats=numSeats;
 		this.threadNum = threadNum;
-		this.paradeOngoing=paradeOngoing;
+		this.march=march;
 	}
 
 	// spawn students
@@ -47,11 +50,11 @@ public class GreenStudentClient extends Thread {
 			writer.println("Green Student: "+0);
 			writer.println(String.valueOf(0));
 			System.out.println(reader.readLine());
-			while(paradeOngoing) {
+			while(march.isParadeOngoing()) {
 				for (int i =1;i<6;i++) {
-					if(!paradeOngoing) {writer.println("parade over"); break;}//send 55 to break in server!!
+					if(!march.isParadeOngoing()) {writer.println("parade over"); break;}//send 55 to break in server!!
 					writer.println("Green Student: "+i);
-					if(!paradeOngoing) {writer.println("parade over"); break;}
+					if(!march.isParadeOngoing()) {writer.println("parade over"); break;}
 					writer.println(i);
 					//if(!paradeOngoing)break;
 					System.out.println(reader.readLine());
@@ -59,7 +62,7 @@ public class GreenStudentClient extends Thread {
 				}
 				
 			}
-			
+			System.out.println("sssssssssss");
 			writer.println("Green Student: "+6);
 			writer.println(String.valueOf(6));
 			System.out.println(reader.readLine());

@@ -167,15 +167,15 @@ public class Marching {
 		msg("I am Marching in the Parade");
 	}
 
-	public boolean isParadeOngoing() {
+	public synchronized boolean isParadeOngoing() {
 		return paradeOngoing;
 	}
 
-	public void setParadeIsOngoing() {
+	public synchronized void setParadeIsOngoing() {
 		paradeOngoing = true;
 	}
 
-	public void setParadeOver() {
+	public synchronized void setParadeOver() {
 		paradeOngoing = false;
 	}
 

@@ -75,9 +75,9 @@ public class ServerHelper extends Thread {
 	}
 	
 	public void clock(BufferedReader reader, PrintWriter writer, Marching march) {
-		System.out.println("oooooooooooooooo");
+		//System.out.println("oooooooooooooooo");
 		ClockHelper helper = new ClockHelper("clock",numOrange,march,numSeats,StaffNotifier);
-		System.out.println("JJJJJJJJJJJJJ");
+		//System.out.println("JJJJJJJJJJJJJ");
 		while(march.isParadeOngoing()) {
 			try {
 				String request = reader.readLine();
