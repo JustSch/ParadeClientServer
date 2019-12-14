@@ -13,11 +13,13 @@ public class GreenStudentClient extends Thread {
 	private int numGreen;
 	private int numOrange;
 	private int numSeats;
+	private int threadNum;
 
-	public GreenStudentClient(int numOrange,int numGreen,int numSeats) {
+	public GreenStudentClient(int numOrange,int numGreen,int numSeats, int threadNum) {
 		this.numOrange=numOrange;
 		this.numGreen = numGreen;
 		this.numSeats=numSeats;
+		this.threadNum = threadNum;
 	}
 
 	// spawn students
@@ -25,10 +27,10 @@ public class GreenStudentClient extends Thread {
 		try {
 
 			Socket connection = new Socket("localhost", 5000);
-			DataOutputStream output = new DataOutputStream(connection.getOutputStream());
-			DataInputStream input = new DataInputStream(connection.getInputStream());
+			//DataOutputStream output = new DataOutputStream(connection.getOutputStream());
+			//DataInputStream input = new DataInputStream(connection.getInputStream());
 
-BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			
 			PrintWriter writer = new PrintWriter(connection.getOutputStream(),true);
 			writer.println("green");
@@ -37,6 +39,8 @@ BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getI
 			writer.println(String.valueOf(numGreen));
 
 			writer.println(String.valueOf(numSeats));
+			
+			writer.println("Green Student: "+threadNum);
 			
 			for (int i =0;i<9;i++) {
 				writer.println(i);

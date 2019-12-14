@@ -20,11 +20,11 @@ public class MainClient {
 		
 		new StaffClient(numOrange,numGreen,numSeat).start();
 		for (int i=0; i< numGreen;i++) {
-			new GreenStudentClient(numOrange,numGreen,numSeat).start();
+			new GreenStudentClient(numOrange,numGreen,numSeat,i).start();
 		}
 		
 		for (int i=0; i< numOrange;i++) {
-			new OrangeStudentClient(numOrange,numGreen,numSeat).start();
+			new OrangeStudentClient(numOrange,numGreen,numSeat,i).start();
 		}
 		
 		

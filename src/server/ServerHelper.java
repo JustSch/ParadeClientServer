@@ -12,7 +12,7 @@ import java.net.Socket;
 import required.Marching;
 
 public class ServerHelper extends Thread {
-	private boolean paradeOngoing;
+	private boolean paradeOngoing =true;
 	private Socket socket = null;
 	private String threadType;
 	//static int greenCount=0;
@@ -31,8 +31,8 @@ public class ServerHelper extends Thread {
 	public void run() {
 		try {
 
-			DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-			DataInputStream dis = new DataInputStream(socket.getInputStream());
+			//DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+			//DataInputStream dis = new DataInputStream(socket.getInputStream());
 
 				BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				
@@ -43,22 +43,25 @@ public class ServerHelper extends Thread {
 			numOrange = Integer.parseInt(reader.readLine());
 			numGreen = Integer.parseInt(reader.readLine());
 			numSeats = Integer.parseInt(reader.readLine());
-			System.out.println("ffffffffffffffffff");
+			
 			Marching march = new Marching();
 			march.startParade(numOrange);
+			System.out.println("ffffffffffffffffff");
 			switch (threadType) {
 			case "clock":
-				clock(reader,dis,dos,writer,march);
+
+				
+				clock(reader,writer,march);
 				break;
 			case "orange":
-				orange(reader,dis,dos,writer,march);
+				orange(reader,writer,march);
 				break;
 				
 			case "green":
-				green(reader,dis,dos,writer,march);
+				green(reader,writer,march);
 				break;
 			case "staff":
-				staff(reader,dis,dos,writer,march);
+				staff(reader,writer,march);
 				break;
 				
 			}
@@ -70,8 +73,8 @@ public class ServerHelper extends Thread {
 
 	}
 	
-	public void clock(BufferedReader reader, DataInputStream dis, DataOutputStream dos, PrintWriter writer, Marching march) {
-		
+	public void clock(BufferedReader reader, PrintWriter writer, Marching march) {
+		System.out.println("oooooooooooooooo");
 		ClockHelper helper = new ClockHelper("clock",numOrange,march,numSeats,StaffNotifier);
 		System.out.println("JJJJJJJJJJJJJ");
 		while(paradeOngoing) {
@@ -90,7 +93,7 @@ public class ServerHelper extends Thread {
 		
 	}
 	
-	public void green(BufferedReader reader, DataInputStream dis, DataOutputStream dos, PrintWriter writer, Marching march) {
+	public void green(BufferedReader reader, PrintWriter writer, Marching march) {
 		try {
 			threadName=reader.readLine();
 			
@@ -113,7 +116,7 @@ public class ServerHelper extends Thread {
 		}
 	}
 	
-	public void orange(BufferedReader reader, DataInputStream dis, DataOutputStream dos, PrintWriter writer, Marching march) {
+	public void orange(BufferedReader reader, PrintWriter writer, Marching march) {
 		try {
 			threadName = reader.readLine();
 		} catch (IOException e1) {
@@ -136,16 +139,14 @@ public class ServerHelper extends Thread {
 		}
 	}
 	
-	public void staff(BufferedReader reader, DataInputStream dis, DataOutputStream dos, PrintWriter writer, Marching march) {
-		try {
-			threadName = reader.readLine();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+	public void staff(BufferedReader reader, PrintWriter writer, Marching march) {
+		/*
+		 * try { threadName = reader.readLine(); } catch (IOException e1) { // TODO
+		 * Auto-generated catch block e1.printStackTrace(); }
+		 */
 		
 		
-		StaffHelper helper = new StaffHelper(march,threadName,StaffNotifier,numSeats);
+		StaffHelper helper = new StaffHelper(march,"Staff Member",StaffNotifier,numSeats);
 		
 		while(paradeOngoing) {
 			try {
