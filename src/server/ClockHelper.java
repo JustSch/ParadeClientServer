@@ -1,8 +1,20 @@
 package server;
 
 import required.Clock;
+import required.Marching;
 
 public class ClockHelper extends Clock{
+	private String string;
+	private int numOrange;
+	private int numSeats;
+	private Marching march;
+	public Object StaffNotifier = new Object();
+	public ClockHelper(String string, int numOrange, Marching march, int numSeats,Object StaffNotifier) {
+		
+		super(string,numOrange, march, numSeats,StaffNotifier);
+		
+	}
+
 	/*
 	 * ClockHelper(){ this.run(); }
 	 */

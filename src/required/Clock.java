@@ -42,7 +42,13 @@ public class Clock implements Runnable {
 		this.march = march;
 		this.numSeat = numSeat;
 	}
-
+	public Clock(String clockName,  int total, Marching march, int numSeat,Object StaffNotifier) {
+		this.clockName = clockName;
+		this.total = total;
+		this.march = march;
+		this.numSeat = numSeat;
+		this.StaffNotifier = StaffNotifier;
+	}
 	public final void setName(String clockNameToSet) {
 
 		Thread.currentThread().setName(clockNameToSet); // Sets name of Clock
