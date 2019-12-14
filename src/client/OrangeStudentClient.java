@@ -48,12 +48,12 @@ public class OrangeStudentClient extends Thread {
 			System.out.println(reader.readLine());
 			while (paradeOngoing) {
 				for (int i =1;i<6;i++) {
-					if(!paradeOngoing)break;
+					if(!paradeOngoing) {writer.println("parade over"); break;}
 					writer.println("Orange Student: "+i);
-					if(!paradeOngoing)break;
+					if(!paradeOngoing) {writer.println("parade over"); break;}
 					writer.println(String.valueOf(i));
 					System.out.println(reader.readLine());
-					if(!paradeOngoing)break;
+					//if(!paradeOngoing)break;
 				}
 				
 			}

@@ -83,7 +83,7 @@ public class ServerHelper extends Thread {
 				String request = reader.readLine();
 				System.out.println("clock requested: "+request);
 				int runNumber = Integer.parseInt(reader.readLine());
-				if (runNumber==19)march.setParadeOver();
+				//if (runNumber==19)march.setParadeOver();
 				helper.runMethods(runNumber);
 				writer.println("Request: "+request+" Complete");
 				
@@ -92,7 +92,7 @@ public class ServerHelper extends Thread {
 			}
 			
 		}
-		march.setParadeOver();
+		//march.setParadeOver();
 		
 		try {
 			String request = reader.readLine();
@@ -122,15 +122,16 @@ public class ServerHelper extends Thread {
 		
 		while(march.isParadeOngoing()) {
 			try {
-				if(!march.isParadeOngoing())break;
+				//if(!march.isParadeOngoing())break;
 				String request = reader.readLine();
-				if(!march.isParadeOngoing())break;
+				if(request == "parade over") break;
 				System.out.println("Green Student requested: "+request);
-				if(!march.isParadeOngoing())break;
-				helper.runningMethods((Integer.parseInt(reader.readLine())));
-				if(!march.isParadeOngoing())break;
+				String requestNum = reader.readLine();
+				if (requestNum=="parade over") break;
+				helper.runningMethods(Integer.parseInt(requestNum));
+				
 				writer.println("Request: "+request+" Complete");
-				if(!march.isParadeOngoing())break;
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -159,13 +160,16 @@ public class ServerHelper extends Thread {
 		
 		while(march.isParadeOngoing()) {
 			try {
-				if(!march.isParadeOngoing())break;
+				//if(!march.isParadeOngoing())break;
 				String request = reader.readLine();
-				if(!march.isParadeOngoing())break;
+				if(request == "parade over") break;
+				
 				System.out.println("Orange Student requested: "+request);
-				if(!march.isParadeOngoing())break;
-				helper.runningMethods((Integer.parseInt(reader.readLine())));
-				if(!march.isParadeOngoing())break;
+				//if(!march.isParadeOngoing())break;
+				String requestNum = reader.readLine();
+				if (requestNum == "parade over")break;
+				helper.runningMethods((Integer.parseInt(requestNum)));
+				//if(!march.isParadeOngoing())break;
 
 				writer.println("Request: "+request+" Complete");
 				if(!march.isParadeOngoing())break;
@@ -197,15 +201,18 @@ public class ServerHelper extends Thread {
 		
 		while(march.isParadeOngoing()) {
 			try {
-				if(!march.isParadeOngoing())break;
+				//if(!march.isParadeOngoing())break;
 				String request = reader.readLine();
-				if(!march.isParadeOngoing())break;
+				if (request == "parade over")break;
+				//if(!march.isParadeOngoing())break;
 				System.out.println("staff requested: "+request);
-				if(!march.isParadeOngoing())break;
-				helper.runningMethods((Integer.parseInt(reader.readLine())));
-				if(!march.isParadeOngoing())break;
+				//if(!march.isParadeOngoing())break;
+				String requestNum = reader.readLine();
+				if (requestNum == "parade over")break;
+				helper.runningMethods((Integer.parseInt(requestNum)));
+				//if(!march.isParadeOngoing())break;
 				writer.println("Request: "+request+" Complete");
-				if(!march.isParadeOngoing())break;
+				//if(!march.isParadeOngoing())break;
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

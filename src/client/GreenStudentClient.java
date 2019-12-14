@@ -49,13 +49,13 @@ public class GreenStudentClient extends Thread {
 			System.out.println(reader.readLine());
 			while(paradeOngoing) {
 				for (int i =1;i<6;i++) {
-					if(!paradeOngoing)break;
+					if(!paradeOngoing) {writer.println("parade over"); break;}//send 55 to break in server!!
 					writer.println("Green Student: "+i);
-					if(!paradeOngoing)break;
+					if(!paradeOngoing) {writer.println("parade over"); break;}
 					writer.println(i);
-					if(!paradeOngoing)break;
+					//if(!paradeOngoing)break;
 					System.out.println(reader.readLine());
-					if(!paradeOngoing)break;
+					//if(!paradeOngoing)break;
 				}
 				
 			}

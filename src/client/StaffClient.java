@@ -42,13 +42,13 @@ public class StaffClient extends Thread {
 			System.out.println(reader.readLine());
 			while (paradeOngoing) {
 				for (int i = 1; i < 3; i++) {
-					if(!paradeOngoing)break;
+					if(!paradeOngoing) {writer.println("parade over"); break;}
 					writer.println("Staff Member: "+i);
-					if(!paradeOngoing)break;
+					if(!paradeOngoing) {writer.println("parade over"); break;}
 					writer.println(i);
-					if(!paradeOngoing)break;
+					//if(!paradeOngoing)break;
 					System.out.println(reader.readLine());
-					if(!paradeOngoing)break;
+					//if(!paradeOngoing)break;
 				}
 			}
 			writer.println("Staff Member: "+3);
