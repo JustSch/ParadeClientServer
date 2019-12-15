@@ -1,3 +1,98 @@
+Sample Client Output:
+
+[scju2324@pelican cs344]$ java client/MainClient crane.cs.qc.cuny.edu 5000
+Request: Orange Student: 0 Complete
+Request: Orange Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Orange Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Orange Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Orange Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Green Student: 0 Complete
+Request: Staff Member: 0 Complete
+Request: Green Student: 0 Complete
+Request: Orange Student: 0 Complete
+Request: Orange Student: 0 Complete
+Request: Clock: 0 Complete
+Request: Orange Student: 1 Complete
+Request: Clock: 1 Complete
+Request: Green Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Orange Student: 1 Complete
+Request: Orange Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Orange Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Orange Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Orange Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Clock: 2 Complete
+Request: Orange Student: 1 Complete
+Request: Green Student: 1 Complete
+Request: Staff Member: 1 Complete
+Request: Staff Member: 2 Complete
+Request: Orange Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Orange Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Orange Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Orange Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Orange Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Orange Student: 2 Complete
+Request: Orange Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Green Student: 2 Complete
+Request: Orange Student: 3 Complete
+Request: Orange Student: 3 Complete
+Request: Orange Student: 3 Complete
+Request: Orange Student: 3 Complete
+Request: Orange Student: 3 Complete
+Request: Orange Student: 3 Complete
+Request: Orange Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+Request: Green Student: 3 Complete
+
+
+Sample Server Output:
+
 [scju2324@crane cs344]$ java server/MainServer 5000
 Wating for Client
 new client connected
@@ -115,53 +210,4 @@ clock requested: Clock: 1
 [1039] Orange Student: 0: I lined up for the parade
 [1040] Orange Student: 3: I lined up for the parade
 [42] clock: It is 11:00AM The Parade Has Started
-[42] clock: The Parade Is Starting: Please Wait In Line
-[2579] clock: A group is entering in the parade
-[2579] clock: A group is entering in the parade
-[2579] Orange Student: 3: I have entered the parade
-[2579] clock: A group is entering in the parade
-[2579] clock: A group is entering in the parade
-[2579] Orange Student: 0: I have entered the parade
-[2580] clock: A group is entering in the parade
-[2580] clock: A group is entering in the parade
-[2580] Green Student: 8: I have entered the parade
-[2580] clock: A group is entering in the parade
-[2580] Green Student: 2: I have entered the parade
-[2580] Green Student: 3: I have entered the parade
-[2580] Green Student: 0: I have entered the parade
-[2580] Green Student: 5: I have entered the parade
-[2580] Green Student: 1: I have entered the parade
-[2580] Orange Student: 5: I have entered the parade
-[2580] Orange Student: 6: I have entered the parade
-[2580] Green Student: 4: I have entered the parade
-Orange Student requested: Orange Student: 2
-[2580] Green Student: 12: I have entered the parade
-[2580] Green Student: 13: I have entered the parade
-clock requested: Clock: 2
-[2581] Green Student: 9: I have entered the parade
-[2581] Green Student: 7: I have entered the parade
-[2581] Orange Student: 2: I have entered the parade
-Green Student requested: Green Student: 2
-[2581] Orange Student: 1: I have entered the parade
-Green Student requested: Green Student: 2
-[2581] Orange Student: 4: I have entered the parade
-Green Student requested: Green Student: 2
-[2581] Green Student: 6: I have entered the parade
-[2581] Green Student: 11: I have entered the parade
-[2581] Green Student: 10: I have entered the parade
-Green Student requested: Green Student: 2
-Green Student requested: Green Student: 2
-Green Student requested: Green Student: 2
-Orange Student requested: Orange Student: 2
-Orange Student requested: Orange Student: 2
-Green Student requested: Green Student: 2
-Green Student requested: Green Student: 2
-Orange Student requested: Orange Student: 2
-[2582] Green Student: 12: I am Marching in the Parade
-Green Student requested: Green Student: 2
-[2583] Orange Student: 4: I am Marching in the Parade
-[2583] Green Student: 7: I am Marching in the Parade
-Green Student requested: Green Student: 2
-[2583] Green Student: 1: I am Marching in the Parade
-Green Student requested: Green Student: 2
-[2583] Orange Student: 2: I am Marching in the Parade
+[42] clock: The Parade Is Starting: Please Wait 
