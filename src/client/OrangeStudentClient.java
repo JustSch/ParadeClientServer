@@ -1,8 +1,6 @@
 package client;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -30,13 +28,12 @@ public class OrangeStudentClient extends Thread {
 		try {
 
 			Socket connection = new Socket("localhost", 5000);
-			//DataOutputStream output = new DataOutputStream(connection.getOutputStream());
-			//DataInputStream input = new DataInputStream(connection.getInputStream());
+			
 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			
 			PrintWriter writer = new PrintWriter(connection.getOutputStream(),true);
-			writer.println("orange");
+			writer.println("orange");// gives threadtype to server
 			writer.println(String.valueOf(numOrange));
 
 			writer.println(String.valueOf(numGreen));
@@ -51,10 +48,10 @@ public class OrangeStudentClient extends Thread {
 			System.out.println(reader.readLine());
 			orangeloop:
 			while (march.isParadeOngoing()) {
-				for (int i =1;i<6;i++) {
-					if(!march.isParadeOngoing()) {writer.println("over"); break orangeloop;}
+				for (int i =1;i<6;i++) { //iterates through all methods and calls them on the server
+					if(!march.isParadeOngoing()) {writer.println("over"); break orangeloop;} //tells server parade is over
 					writer.println("Orange Student: "+i);
-					if(!march.isParadeOngoing()) {writer.println("over"); break orangeloop;}
+					if(!march.isParadeOngoing()) {writer.println("over"); break orangeloop;}//tells server parade is  over
 					writer.println(String.valueOf(i));
 					System.out.println(reader.readLine());
 					//if(!paradeOngoing)break;

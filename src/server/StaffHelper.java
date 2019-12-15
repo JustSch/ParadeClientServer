@@ -10,7 +10,7 @@ public class StaffHelper extends StaffMember{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void runningMethods(int method) {
+	public void runningMethods(int method) { //all methods for staff
 		switch(method) {
 		case 0:
 			settingName();

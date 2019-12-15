@@ -1,8 +1,6 @@
 package client;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -25,23 +23,16 @@ public class ClockClient extends Thread {
 	}
 	
 	public void run() {
-		// connect to server
-		// create input and output streams
-		// run methods
+		
 		try {
 			
-			Socket connection = new Socket("localhost", 5000);
+			Socket connection = new Socket("localhost", 5000); //opens socket
 			
-			
-			//DataOutputStream output = new DataOutputStream(connection.getOutputStream());
-			//DataInputStream input = new DataInputStream(connection.getInputStream());
-
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			
 			PrintWriter writer = new PrintWriter(connection.getOutputStream(),true);
-			//march.setParadeIsOngoing();
-			//System.out.println(reader.readLine());
-			writer.println("clock");
+			
+			writer.println("clock");//lets server thread know client type
 			writer.println(String.valueOf(numOrange));
 
 			writer.println(String.valueOf(numGreen));
@@ -49,7 +40,7 @@ public class ClockClient extends Thread {
 			writer.println(String.valueOf(numSeats));
 			
 			
-			for (int i =0;i<=19;i++) {
+			for (int i =0;i<=19;i++) {	//iterates through all methods and calls them on server
 				writer.println("Clock: "+i);
 				writer.println(i);
 				System.out.println(reader.readLine());

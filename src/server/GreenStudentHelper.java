@@ -5,10 +5,10 @@ public class GreenStudentHelper extends GreenStudent{
 
 	public GreenStudentHelper(Marching march, String name, int numSeat, int totalParadeGroups) {
 		super(march, name, numSeat, totalParadeGroups);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-	public void runningMethods(int methods) {
+	public void runningMethods(int methods) { //all methods for green students
 		switch (methods) {
 		case 0:
 			getReadyToWait();

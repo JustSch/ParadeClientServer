@@ -1,8 +1,6 @@
 package client;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -29,12 +27,10 @@ public class StaffClient extends Thread {
 		try {
 
 			Socket connection = new Socket("localhost", 5000);
-			//DataOutputStream output = new DataOutputStream(connection.getOutputStream());
-			//DataInputStream input = new DataInputStream(connection.getInputStream());
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
 			PrintWriter writer = new PrintWriter(connection.getOutputStream(), true);
-			writer.println("staff");
+			writer.println("staff");  //send threadtype to server
 			writer.println(String.valueOf(numOrange));
 
 			writer.println(String.valueOf(numGreen));
@@ -44,7 +40,7 @@ public class StaffClient extends Thread {
 			writer.println(String.valueOf(0));
 			System.out.println(reader.readLine());
 			staffloop:
-			while (march.isParadeOngoing()) {
+			while (march.isParadeOngoing()) {//iterates through all methods and runs them on the server 
 				for (int i = 1; i < 3; i++) {
 					if(!march.isParadeOngoing()) {writer.println("over"); break staffloop;}
 					writer.println("Staff Member: "+i);
