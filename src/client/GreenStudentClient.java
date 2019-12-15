@@ -57,7 +57,7 @@ public class GreenStudentClient extends Thread {
 					writer.println("Green Student: "+i);
 					if(!march.isParadeOngoing()) {writer.println("over"); break greenloop;}//Tells Server parade is over
 					writer.println(i);
-					System.out.println(reader.readLine());
+					System.out.println(reader.readLine());//waits for request to complete then prints that it was completed
 					
 				}
 				
