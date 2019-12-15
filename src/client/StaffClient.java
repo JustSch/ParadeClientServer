@@ -15,18 +15,22 @@ public class StaffClient extends Thread {
 	private int numGreen;
 	private boolean paradeOngoing;
 	private Marching march;
+	private String hostName;
+	private int portNumber;
 
-	public StaffClient(int numOrange, int numGreen, int numSeats, Marching march) {
+	public StaffClient(int numOrange, int numGreen, int numSeats, Marching march, String hostName, int portNumber) {
 		this.numSeats = numSeats;
 		this.numOrange = numOrange;
 		this.numGreen = numGreen;
 		this.march=march;
+		this.hostName=hostName;
+		this.portNumber=portNumber;
 	}
 
 	public void run() {
 		try {
 
-			Socket connection = new Socket("localhost", 5000);
+			Socket connection = new Socket(hostName, portNumber);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
 			PrintWriter writer = new PrintWriter(connection.getOutputStream(), true);

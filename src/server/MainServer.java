@@ -8,8 +8,8 @@ import java.net.Socket;
 
 public class MainServer {
 
-	private static int port;
-	private static String address;
+	private static int portNumber;
+	//private static String address;
 	private static boolean paradeOngoing = true;
 
 	public MainServer() {
@@ -18,9 +18,15 @@ public class MainServer {
 
 	public static void main(String[] args) {
 		
+		if (args.length !=1) {
+			portNumber=5000;
+		}
+		else
+			portNumber=Integer.parseInt(args[0]);
+		
 		try {
 
-			ServerSocket server = new ServerSocket(5000); //create server socket to receive connections from all clients
+			ServerSocket server = new ServerSocket(portNumber); //create server socket to receive connections from all clients
 			
 
 			System.out.println("Wating for Client");

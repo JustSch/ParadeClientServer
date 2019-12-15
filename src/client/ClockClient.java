@@ -15,18 +15,22 @@ public class ClockClient extends Thread {
 	private int numSeats;
 	private boolean paradeOngoing;
 	private Marching march;
-	public ClockClient(int numOrange,int numGreen,int numSeats, Marching march) {
+	private String hostName;
+	private int portNumber;
+	public ClockClient(int numOrange,int numGreen,int numSeats, Marching march,String hostName, int portNumber) {
 		this.numOrange = numOrange;
 		this.numGreen = numOrange;
 		this.numSeats = numSeats;
 		this.march=march;
+		this.hostName=hostName;
+		this.portNumber=portNumber;
 	}
 	
 	public void run() {
 		
 		try {
 			
-			Socket connection = new Socket("localhost", 5000); //opens socket
+			Socket connection = new Socket(hostName, portNumber); //opens socket
 			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			

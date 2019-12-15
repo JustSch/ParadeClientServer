@@ -16,18 +16,23 @@ public class OrangeStudentClient extends Thread {
 	private int threadNum;
 	private boolean paradeOngoing;
 	private Marching march;
-	public OrangeStudentClient(int numOrange, int numGreen, int numSeats, int threadNum, Marching march) {
+	private String hostName;
+	private int portNumber;
+	public OrangeStudentClient(int numOrange, int numGreen, int numSeats, int threadNum, Marching march, String hostName, int portNumber) {
 		this.numOrange = numOrange;
 		this.numGreen=numGreen;
 		this.numSeats=numSeats;
 		this.threadNum=threadNum;
 		this.march=march;
+		this.hostName=hostName;
+		this.portNumber=portNumber;
+		
 	}
 
 	public void run() {
 		try {
 
-			Socket connection = new Socket("localhost", 5000);
+			Socket connection = new Socket(hostName, portNumber);
 			
 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
