@@ -21,10 +21,15 @@ from a different terminal window than the server
 where the hostname is the host the server is running ie: local host or a bird url
 and portnumber to run it on.
 If no hostname and portNumber are given it defaults to localhost port 5000
+If only one value is given it may still use default values
+
 
 How I Ran It:
+They were placed in a folder cs344
+cd cs344
 The Was Tested with Server running on crane
 and Client Running on Pelican by running these commands in terminal:
+
 
  java server/MainServer 5000 (in terminal window on crane)
  java client/MainClient crane.cs.qc.cuny.edu 5000  (in terminal window on pelican)
