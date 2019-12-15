@@ -90,17 +90,15 @@ public class ServerHelper extends Thread {
 				
 			} catch (IOException e) {
 				e.printStackTrace();
+				break;
 			}
 			
 		}
 		//march.setParadeOver();
 		
 		try {
-			String request = reader.readLine();
-			System.out.println("clock requested: "+request);
-			helper.runMethods((Integer.parseInt(reader.readLine())));
-			writer.println("Request: "+request+" Complete");
 			
+			socket.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -124,28 +122,37 @@ public class ServerHelper extends Thread {
 			try {
 				//if(!march.isParadeOngoing())break;
 				String request = reader.readLine();
-				if(request.equals("over")) break;
+				if(request.equals("over")||request.equals(null)) break;
 				//if (request == "Green Student: 6") System.out.println("i didnt break");
 				System.out.println("Green Student requested: "+request);
 				String requestNum = reader.readLine();
-				if (requestNum=="over") break;
+				if(request.equals("over")||request.equals(null)) break;
 				helper.runningMethods(Integer.parseInt(requestNum));
 				
 				writer.println("Request: "+request+" Complete");
 				
-			} catch (IOException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				//e.printStackTrace();
+				break;
 			}
 		}
 		try {
 			String request = reader.readLine();
-			System.out.println("Green Student requested: "+request);
+			if(request.equals(null));
+			else 
+				System.out.println("Green Student requested: "+request);
 			helper.runningMethods((Integer.parseInt(reader.readLine())));
 			writer.println("Request: "+request+" Complete");
-			
-		} catch (IOException e) {
+			socket.close();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			try {
+				socket.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				//e1.printStackTrace();
+			}
 		}
 	}
 	
@@ -169,7 +176,7 @@ public class ServerHelper extends Thread {
 				//if(!march.isParadeOngoing())break;
 				String requestNum = reader.readLine();
 				System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ "+requestNum);
-				if (requestNum == "over")break;
+				if (requestNum.equals("over"))break;
 				helper.runningMethods((Integer.parseInt(requestNum)));
 				//if(!march.isParadeOngoing())break;
 
@@ -177,6 +184,7 @@ public class ServerHelper extends Thread {
 				//if(!march.isParadeOngoing())break;
 			} catch (IOException e) {
 				e.printStackTrace();
+				break;
 			}
 		}
 		try {
@@ -187,6 +195,7 @@ public class ServerHelper extends Thread {
 			helper.runningMethods((Integer.parseInt(requestNum)));
 
 			writer.println("Request: "+request+" Complete");
+			socket.close();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -207,30 +216,39 @@ public class ServerHelper extends Thread {
 			try {
 				//if(!march.isParadeOngoing())break;
 				String request = reader.readLine();
-				if (request.equals("over"))break;
+				if (request.equals("over")||request.equals(null))break;
 				//if(!march.isParadeOngoing())break;
 				System.out.println("staff requested: "+request);
 				//if(!march.isParadeOngoing())break;
 				String requestNum = reader.readLine();
-				if (requestNum == "over")break;
+				if (request.equals("over")||request.equals(null))break;
 				helper.runningMethods((Integer.parseInt(requestNum)));
 				//if(!march.isParadeOngoing())break;
 				writer.println("Request: "+request+" Complete");
 				//if(!march.isParadeOngoing())break;
-			} catch (IOException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				//e.printStackTrace();
+				break;
 			}
 		}
 		
 		try {
 			String request = reader.readLine();
-			System.out.println("staff requested: "+request);
+			if (request.equals(null));
+			else System.out.println("staff requested: "+request);
 			helper.runningMethods((Integer.parseInt(reader.readLine())));
 			writer.println("Request: "+request+" Complete");
+			socket.close();
 		
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			try {
+				socket.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				//e1.printStackTrace();
+			}
 		}
 	}
 

@@ -43,11 +43,12 @@ public class StaffClient extends Thread {
 			writer.println("Staff Member: "+0);
 			writer.println(String.valueOf(0));
 			System.out.println(reader.readLine());
+			staffloop:
 			while (march.isParadeOngoing()) {
 				for (int i = 1; i < 3; i++) {
-					if(!march.isParadeOngoing()) {writer.println("over"); break;}
+					if(!march.isParadeOngoing()) {writer.println("over"); break staffloop;}
 					writer.println("Staff Member: "+i);
-					if(!march.isParadeOngoing()) {writer.println("over"); break;}
+					if(!march.isParadeOngoing()) {writer.println("over"); break staffloop;}
 					writer.println(i);
 					//if(!paradeOngoing)break;
 					System.out.println(reader.readLine());
