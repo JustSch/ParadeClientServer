@@ -58,8 +58,8 @@ public class OrangeStudentClient extends Thread {
 					writer.println("Orange Student: "+i);
 					if(!march.isParadeOngoing()) {writer.println("over"); break orangeloop;}//tells server parade is  over
 					writer.println(String.valueOf(i));
-					System.out.println(reader.readLine());
-					//if(!paradeOngoing)break;
+					System.out.println(reader.readLine());//waits for request to complete then prints that it was completed
+					
 				}
 				
 			}
@@ -68,10 +68,8 @@ public class OrangeStudentClient extends Thread {
 			System.out.println(reader.readLine());
 
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -50,9 +50,8 @@ public class StaffClient extends Thread {
 					writer.println("Staff Member: "+i);
 					if(!march.isParadeOngoing()) {writer.println("over"); break staffloop;}
 					writer.println(i);
-					//if(!paradeOngoing)break;
-					System.out.println(reader.readLine());
-					//if(!paradeOngoing)break;
+					System.out.println(reader.readLine()); //waits for request to complete then prints that it was completed
+				
 				}
 			}
 			writer.println("Staff Member: "+3);
@@ -61,10 +60,8 @@ public class StaffClient extends Thread {
 			
 
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

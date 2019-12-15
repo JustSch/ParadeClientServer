@@ -47,7 +47,7 @@ public class ClockClient extends Thread {
 			for (int i =0;i<=19;i++) {	//iterates through all methods and calls them on server
 				writer.println("Clock: "+i);
 				writer.println(i);
-				System.out.println(reader.readLine());
+				System.out.println(reader.readLine()); //waits for request to complete then prints that it was completed
 			}
 			march.setParadeOver();
 
